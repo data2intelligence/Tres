@@ -4,7 +4,7 @@ Prerequisite:
 1, ridge_significance: https://github.com/data2intelligence/ridge_significance    
 Please read its README.md and run test to make sure the successful installation.    
   
-2, CellSig: https://github.com/data2intelligence/CellSig  
+2, CytoSig: https://github.com/data2intelligence/CytoSig  
 Please read its README.md and run test to make sure the successful installation.  
   
 3, pandas >= 1.1.4: You may install anaconda (https://www.anaconda.com) to include all required python packages.      

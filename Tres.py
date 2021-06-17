@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os, sys, pandas, numpy, pathlib, getopt
-import CellSig
+import CytoSig
 from statsmodels.stats.multitest import multipletests
 
 err_tol = 1e-8
@@ -35,7 +35,7 @@ def profile_geneset_signature(expression):
     
     X = pandas.concat([background, X], axis=1, join='inner')
     
-    result = CellSig.ridge_significance_test(X, expression, alpha=0, alternative="two-sided", nrand=0, verbose=verbose_flag)
+    result = CytoSig.ridge_significance_test(X, expression, alpha=0, alternative="two-sided", nrand=0, verbose=verbose_flag)
     
     return result[2].loc['Proliferation']
 
@@ -59,7 +59,7 @@ def interaction_test(expression, X, y):
         
         try:
             y = pandas.DataFrame(y)
-            result = CellSig.ridge_significance_test(X, y, alpha=0, alternative="two-sided", nrand=0, flag_normalize=False, verbose=verbose_flag)
+            result = CytoSig.ridge_significance_test(X, y, alpha=0, alternative="two-sided", nrand=0, flag_normalize=False, verbose=verbose_flag)
         
         except ArithmeticError:
             failed.append(gid)
@@ -165,7 +165,7 @@ def main():
     ###############################################################
     # compute signaling activity
     try:
-        result_signaling = CellSig.ridge_significance_test(signature, expression, alpha=1E4, verbose=verbose_flag)
+        result_signaling = CytoSig.ridge_significance_test(signature, expression, alpha=1E4, verbose=verbose_flag)
     
     except ArithmeticError:
         sys.stderr.write('CellSig regression failed.\n')
