@@ -9,7 +9,7 @@ verbose_flag = False
 
 fpath = pathlib.Path(__file__).parent.absolute()
 
-pivots = ['TGFB1', 'TRAIL']
+pivots = ['TGFB1', 'TRAIL', 'PGE2']
 
 def profile_geneset_signature(expression):
     signature = []
@@ -132,10 +132,10 @@ def main():
     
     ###############################################################
     # read signature
-    signature = os.path.join(sys.prefix, 'bin', 'signature.centroid')
+    signature = os.path.join(sys.prefix, 'bin', 'signature.centroid.expand')
     
     if not os.path.exists(signature):
-        sys.stderr.write('Cannot find signature file %s. Please make sure your CellSig installation is successful.\n' % signature)
+        sys.stderr.write('Cannot find signature file %s. Please make sure your CytoSig installation is successful.\n' % signature)
         sys.exit(1)
     else:
         signature = pandas.read_csv(signature, sep='\t', index_col=0)
@@ -168,7 +168,7 @@ def main():
         result_signaling = CytoSig.ridge_significance_test(signature, expression, alpha=1E4, verbose=verbose_flag)
     
     except ArithmeticError:
-        sys.stderr.write('CellSig regression failed.\n')
+        sys.stderr.write('CytoSig regression failed.\n')
         sys.exit(1)
     
     # get the z-scores

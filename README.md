@@ -1,4 +1,4 @@
-T-cell resilience model  
+Tumor-resilient T-cell model  
 
 Prerequisite:  
 1, ridge_significance: https://github.com/data2intelligence/ridge_significance    
@@ -26,7 +26,7 @@ Column: Condition ID in the format of Value_Type.Cell_Type.Patient_ID.Signal_ID
   -Value_Type: t: t-value from the student t-test on the interaction term in regression, p: p-value of the associated t-value  
   -Cell_Type: the same as input  
   -Patient_ID: the same as input  
-  -Signal_ID: TGFB1 or TRAIL, representing two immunosuppressive signals in the tumor microenvironment  
+  -Signal_ID: TGFB1, TRAIL, PGE2, representing immunosuppressive signals in the tumor microenvironment  
   
 Row: Gene ID  
   
