@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import time
+import resource
 import os, sys, pandas, numpy, pathlib, getopt
 import CytoSig
 from statsmodels.stats.multitest import multipletests
@@ -155,6 +157,7 @@ def main():
     
     # gene names must be unique
     assert expression.index.value_counts().max() == 1
+    print('input matrix dimension', expression.shape)
     
     # subset for debugging
     #expression = expression.loc[:, [v.split('.')[0] == 'Cancer' for v in expression.columns]]
@@ -222,4 +225,10 @@ def main():
     
     return 0
 
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+    time_start = time.perf_counter()
+    main()
+    time_elapsed = (time.perf_counter() - time_start)
+    memMb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0/1024.0
+    
+    print ("%5.1f secs %5.1f MByte" % (time_elapsed,memMb))
