@@ -1,7 +1,7 @@
 Tumor-resilient T-cell model  
 
 **Prerequisite**:  
-1, ridge\_significance: https://github.com/data2intelligence/ridge\_significance    
+1, ridge\_significance: https://github.com/data2intelligence/ridge_significance    
 Please read its README.md and run test to make sure the successful installation.    
   
 2, CytoSig: https://github.com/data2intelligence/CytoSig  
