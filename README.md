@@ -69,4 +69,4 @@ Row: Sample ID
 
   
 Example:  
-In the directory of README.md, please type: Tres.py -i tests/Sample\_Melanoma\_GSE120575\_Tex.gz -o output  
+In the directory of README.md, please type: Tres.py -m predict -i tests/Sample\_Melanoma\_GSE120575\_Tex.gz -o output  
