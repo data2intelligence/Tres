@@ -188,11 +188,12 @@ def main():
     run_mode = 'run'
     input_file = output_file = None
     count_thres = 100
-    
-    prompt_msg = 'Usage:\nTres.py -m <running mode (run|predict), default: %s> -i <input single-cell data> -o <output prefix> -c <count threshold, default: %d>\n' % (run_mode, count_thres)
+    normalization = False
+        
+    prompt_msg = 'Usage:\nTres.py -m <running mode (run|predict), default: %s> -i <input single-cell data> -o <output prefix> -c <count threshold, default: %d> -n <mean-normalization, default: %d>\n' % (run_mode, count_thres, normalization)
     
     try:
-        opts, _ = getopt.getopt(sys.argv[1:], "hm:i:o:c:", [])
+        opts, _ = getopt.getopt(sys.argv[1:], "hm:i:o:c:n:", [])
     
     except getopt.GetoptError:
         sys.stderr.write('Error input\n' + prompt_msg)
@@ -220,6 +221,9 @@ def main():
         elif opt in ("-o"):
             output_file = arg
         
+        elif opt in ("-n"):
+            normalization = (int(arg) != 0)
+        
         elif opt in ("-c"):
             try:
                 count_thres = int(arg)
@@ -230,7 +234,6 @@ def main():
             if count_thres < 10:
                 sys.stderr.write('count threshold %d < 10. Please input a number >= 10\n' % count_thres)
                 sys.exit(1)
-    
     
     if input_file is None:
         sys.stderr.write('Please provide a input file\n')
@@ -263,8 +266,9 @@ def main():
     
     print('input matrix dimension', expression.shape)
     
-    #background_expression = expression.mean(axis=1)
-    #expression = expression.subtract(background_expression, axis=0)
+    if normalization:
+        background_expression = expression.mean(axis=1)
+        expression = expression.subtract(background_expression, axis=0)
     
     if run_mode == 'run':
         run_Tres(expression, output_file, count_thres)    
