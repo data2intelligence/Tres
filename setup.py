@@ -45,6 +45,7 @@ setup(
     
     data_files=[
         ('bin', [
+            os.path.join('src', 'convert_mtx.py'),
             os.path.join('src', 'Tres.py'),
             os.path.join('src', 'Tres.prediction_signature.gz'),
             os.path.join('src', 'Tres.kegg'),
