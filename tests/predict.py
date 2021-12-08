@@ -10,7 +10,7 @@ class TestPredict(unittest.TestCase):
         self.assertTrue((A-B).abs().max().max() < 1e-8)
 
     def test_predict(self):
-        data = os.path.join(fpath, 'Sample_Melanoma_GSE120575_Tex.gz')
+        data = os.path.join(fpath, 'Sample_Melanoma_GSE120575.gz')
         result_expected = pandas.read_csv(output + '.predict.gz', sep='\t', index_col=0)
         
         # run command line as usage 1

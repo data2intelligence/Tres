@@ -54,7 +54,7 @@ In the directory of README.md, please type: Tres.py -i tests/Melanoma.GSE115978.
 **Usage 2: compute sample-wise correlations with pre-computed Tres signature**:      
 Tres.py -m predict -i <sample data> -o output -c <count threshold, default: 100> -n <mean-normalization, default: 0>  
   
-1, input: sample transcriptomic data matrix. The format could be a text file, gzip file, or pickle file. Please see "Sample\_Melanoma\_GSE120575\_Tex.gz" as an example.  
+1, input: sample transcriptomic data matrix. The format could be a text file, gzip file, or pickle file. Please see "Sample\_Melanoma\_GSE120575.gz" as an example.  
   
 Column: Sample ID.  
 Row: Human gene symbols.  
