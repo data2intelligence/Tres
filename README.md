@@ -91,7 +91,7 @@ This command line tool will be installed together with Tres.
   
 **Test**:  
 First, download some sample cellranger output files:  
-wget [https://hpc.nih.gov/~Jiang_Lab/Tres/GSE139829_sample.tar.gz](https://hpc.nih.gov/~Jiang_Lab/Tres/GSE139829_sample.tar.gz)  
+wget --no-check-certificate [https://hpc.nih.gov/~Jiang_Lab/Tres/GSE139829_sample.tar.gz](https://hpc.nih.gov/~Jiang_Lab/Tres/GSE139829_sample.tar.gz)  
 tar xvf GSE139829_sample.tar.gz  
   
 Second, cd into the extracted folder and type:  
